@@ -19,7 +19,8 @@
  •	geometric mean of the random numbers with 1 digit after the decimal point
  
 
-PLACE YOUR NAME HERE
+Brian Le
+Unix
 
 */
 #include <iostream>
@@ -28,8 +29,17 @@ using namespace std;
 
 int main()
 {
+    int r1,
+        r2,
+        r3;
+    
+    r1 = rand()%(13 - - 5 + 1) - 5;
+    r2 = rand()%(13 - - 5 + 1) - 5;
+    r3 = rand()%(13 - - 5 + 1) - 5;
+    
+    cout << r1 << endl << r2 << endl << r3 << endl;
 
-   return 0;
+    return 0;
 }
 /*********************************************************************************
 SAVE THE FIRST OUTPUT HERE
