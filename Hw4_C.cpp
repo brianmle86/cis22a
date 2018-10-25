@@ -15,16 +15,24 @@
  Display clear error messages, showing what was wrong.
  NOTE: Do not forget to define and use named constants.
 
-PLACE YOUR NAME HERE
+Brian Le
+Unix
 */
 
 #include <iostream>
 
 using namespace std;
 
-int main()
-{
+const double PACK_A = 39.99;
+const double PACK_B = 59.99;
+const double PACK_C = 69.99;
 
+int main() {
+    cout << "Package A, B, or C? ";
+    cin >> package;
+
+    switch (package) {
+        case A: 
     return 0;
 }
 /**~*~*~*~*~*~*~*~*~*
