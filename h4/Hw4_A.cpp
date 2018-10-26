@@ -17,7 +17,7 @@ Unix
 
 using namespace std;
 
-int main(){
+int main() {
     int n1,n2,n3;
     double eAvg;
     int eSum, oSum;
@@ -68,16 +68,32 @@ int main(){
 }
 
 /**~*~*~*~*~*~*~*~*~*~*~*~
-SAVE THE FIRST OUTPUT HERE
-
+Enter three integers: 6 4 2
+n1 = 6
+n2 = 4
+n3 = 2
+The average of the even numbers is 4
+There are no odd numbers.
+There are no negative numbers.
 */
 
 /**~*~*~*~*~*~*~*~*~*~*~*~
-SAVE THE SECOND OUTPUT HERE
-
+Enter three integers: 8 5 2
+n1 = 8
+n2 = 5
+n3 = 2
+The average of the even numbers is 5
+The sum of the odd numbers is 5
+There are no negative numbers.
 */
 
 /**~*~*~*~*~*~*~*~*~*~*~*~
-SAVE THE THIRD OUTPUT HERE
+Enter three integers: 7 -8 0
+n1 = 7
+n2 = -8
+n3 = 0
+The average of the even numbers is -4
+The sum of the odd numbers is 7
+There are/is 1 negative number[s]
 
 */
