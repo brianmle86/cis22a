@@ -14,8 +14,7 @@
 #include<fstream>
 using namespace std;
 
-int main()
-{
+int main() {
     ofstream outputFile;
     ifstream infile;
     int rNum;
@@ -24,8 +23,7 @@ int main()
     outputFile.open("Numbers.txt");
     
     // Write 10 random numbers to the file
-    for (int i = 0; i < 10; i++)
-    {
+    for (int i = 0; i < 10; i++) {
         rNum = rand() % 51 - 10;
         outputFile << rNum << " ";
     }
@@ -41,27 +39,24 @@ int main()
     ifstream inFile;
     
     inFile.open(fileName);  // another way of opening the input file
-    if (!inFile) // could not open the input file // <=== Always check this!
-    {
+    if (!inFile) {// could not open the input file // <=== Always check this!
+    
         cout << "Error opening " << fileName << " for reading!\n";
     }
-    else
-    {
+    else {
         // calculate the average of the positive numbers ( > 0 )
         int psum = 0;
-        while (inFile >> rNum) {
-            if (rNum > 0)
-                psum += rNum;
-        }
-        // define other variables as needed
-        
         int sum = 0;
-        while (inFile >> rNum)
-        {
+        int pnum_count = 0;
+        while (inFile >> rNum) {
             cout << rNum << " ";
             sum += rNum;
-            
+            if (rNum > 0) {
+                psum += rNum;
+                pnum_count++;
+            }
         }
+        // define other variables as needed
         // Close the file.
         inFile.close();
         
@@ -69,8 +64,7 @@ int main()
         cout << "\n\nThe average of the random numbers is: " << sum / 10.0 << endl;
         
         // Show the average of the positive ( > 0 ) numbers
-        cout << psum << endl;
-        cout << "\n\nThe average of the positive random numbers is: " << psum / 10.0 << endl;
+        cout << "\n\nThe average of the positive random numbers is: " << psum / static_cast<double>(pnum_count) << endl;
         
     }
     return 0;

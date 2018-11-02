@@ -1,0 +1,8 @@
+Brian Le
+Game 1: 18 - guessed in 2 tries
+Game 2: 16 - guessed in 3 tries
+Game 3: 26 - not guessed
+
+Bob
+Game 1: 21 - not guessed
+Game 2: 26 - not guessed
