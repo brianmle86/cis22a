@@ -8,7 +8,7 @@
  Finish the program following the specifications listed below as comments.
  Run the program and save the output as a comment at the end of the source file.
  
- NAME: 
+ NAME: Brian Le
  */
 #include<iostream>
 #include<fstream>
@@ -17,6 +17,7 @@ using namespace std;
 int main()
 {
     ofstream outputFile;
+    ifstream infile;
     int rNum;
     
     // Open an output file.
@@ -34,6 +35,7 @@ int main()
     cout << "File with 10 random numbers created!\n";
     
     // Open the same file to read from;
+    infile.open("Numbers.txt");
     //string fileName = "Number.txt";  // <==== Try to open this file!
     string fileName = "Numbers.txt";
     ifstream inFile;
@@ -46,7 +48,13 @@ int main()
     else
     {
         // calculate the average of the positive numbers ( > 0 )
+        int psum = 0;
+        while (inFile >> rNum) {
+            if (rNum > 0)
+                psum += rNum;
+        }
         // define other variables as needed
+        
         int sum = 0;
         while (inFile >> rNum)
         {
@@ -61,7 +69,8 @@ int main()
         cout << "\n\nThe average of the random numbers is: " << sum / 10.0 << endl;
         
         // Show the average of the positive ( > 0 ) numbers
-        
+        cout << psum << endl;
+        cout << "\n\nThe average of the positive random numbers is: " << psum / 10.0 << endl;
         
     }
     return 0;

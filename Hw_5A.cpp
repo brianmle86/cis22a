@@ -27,11 +27,11 @@ int main()
              << "2. while loop\n"
              << "3. do - while loop\n"
              << "4. Quit the Program\n\n"
-             << "Enter your choice: "
-        cin  << choice;
+             << "Enter your choice: ";
+        cin  >>  choice;
         
         // Validate the menu selection.
-        while (choice < 1 && choice >= 4
+        while (choice < 1 || choice > 4)
         {
             cout << "Please enter a valid menu choice: ";
             cin >> choice;
@@ -41,27 +41,27 @@ int main()
         int i, power, n = 6; // variables needed for loops
         
         switch (choice)
-        
-            case :1
+        {
+            case 1:
                 cout << "Your choice is the \"for loop\": \n\n";
-                for (i = 0, power = 1; i <= n, i++);
+                for (i = 0, power = 1; i <= n; i++)
                 {
                     cout << "2 to " << i << " is " << power << endl;
                     power *= 2;
                 }
-                
+                break;
             case 2:
                 cout << "Your choice is the \"while loop\": \n\n";
                 i = 0;
                 power = 1;
                 while (i < n)
-                
+                {
                     cout << "2 to " << i << " is " << power << endl;
                     power *= 2;
                     i++;
-            
+                }
                 break;
-            case 3
+            case 3:
                 cout << "Your choice is the \"do-while loop\": \n\n";
                 i = 0;
                 power = 1;
@@ -70,7 +70,7 @@ int main()
                     cout << "2 to " << i << " is " << power << endl;
                     power *= 2;
                     i++;
-                } while (i <= n)
+                } while (i <= n);
                 break;
             case 4:
                 cout << "Good bye!\n\n";
