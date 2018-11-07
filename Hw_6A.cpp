@@ -27,27 +27,28 @@ const  double PI = 3.14;
 
 void welcome(void);
 void farewell(void);
-double get_radius(void);
-void print_results(double radius, double circ, double area);
-double calc_area(double);
-double calc_circ(double);
-
+double getRadius(void);
+void printResults(double radius, double circ, double area);
+double calcArea(double);
+double calcCirc(double);
+void calcCircle(double, double &, double &);
 int main() {
     double radius;
 	double area, circ;
     // Display a welcome message
     welcome();
     // Get Radius
-    radius = get_radius();
+    radius = getRadius();
     // Perform Calculations
-    circ = calc_circ(radius);
-    area = calc_area(radius);
+    circ = calcCirc(radius);
+    area = calcArea(radius);
 
     // Display Results
-    print_results(radius, circ, area);
+    printResults(radius, circ, area);
     // Perform Calculations - second solution
     // call the calculateCircle function
-    
+    area = circ = 0;
+    calcCircle(radius, area, circ); //call
     // Display Results again, after the second calculation
     // call the printCircle function again
 
@@ -71,7 +72,7 @@ void farewell() {   //farewell to user
          << "\t      Thank you\n\tfor using my program!\n";
 }
 
-double get_radius() {   //prompt user for radius
+double getRadius() {   //prompt user for radius
     double radius;  //radius
     do {
         cout << "Enter radius (must be > 0): ";
@@ -80,21 +81,30 @@ double get_radius() {   //prompt user for radius
     return radius;
 }
 
-void print_results(double radius, double circ, double area) {  //output results
+void printResults(double radius, double circ, double area) {  //output results
     cout << "\n\nRESULTS\n";
     cout << "\tRadius = " << radius << endl;
     cout << "\tCircumference = " << circ << endl;
     cout << "\tArea = " << area << endl;
 }
 
-double calc_area(double radius) {  //calculate area of circle
+double calcArea(double radius) {  //calculate area of circle
     double area;
     area = PI * radius * radius;
     return area;
 }
 
-double calc_circ(double radius) {  //calculate circumference of circle
+double calcCirc(double radius) {  //calculate circumference of circle
     double circ;
-    circ = 2 * radius * radius;
+    circ = 2 * PI * radius;
     return circ;
 }
+
+void calcCircle(double radius, double &area, double &circ) {
+    area = 2 * radius * radius;
+    circ = 2 * PI * radius;
+}
+
+
+
+
