@@ -33,7 +33,7 @@ void welcome(void);
 void farewell(void);
 void displayRectangle(double, double, double, double);
 void calculateRectangle(double, double, double &, double &);
-void getRectangle(ifstream &, double &, double &);
+bool getRectangle(ifstream &, double &, double &);
 
 int main() {
     ifstream inFile;

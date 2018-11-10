@@ -33,8 +33,7 @@ void findHighest(void);
 void writeScore(void);
 void printEnd(void);
 
-int main()
-{
+int main() {
     // declare the variables needed in main()
     
     printInfo();
@@ -65,6 +64,7 @@ void printInfo(void)
 {
     if (DE_BUG)
         cout << "This is the welcome function" << endl;
+
 }
 
 /*~*~*~*
