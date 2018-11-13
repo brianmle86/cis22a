@@ -189,3 +189,16 @@ void printEnd(void) {
         cout << "This is the END function" << endl;
     cout << endl << "This is the end of the program. Thanks!\n";
 }
+
+/**
+ Welcome to the competition results calculator!
+There are five judges who give out a score,
+and the highest and lowest scores are dropped.
+The final score is the average of the three remaining scores.
+
+Number of participants: 8
+The winner is Sue with a score of 27.4
+
+This is the end of the program. Thanks!
+
+*/
