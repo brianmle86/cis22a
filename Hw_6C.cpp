@@ -13,28 +13,27 @@
  the screen. Write to a file named results.txt the names of the performers and their
  final score.
  
- NAME:
+ NAME: Brian Le
  
  *~**/
 
 #include <iostream>
 #include <fstream>
-#include <string>
 
 using namespace std;
 
 const int DE_BUG = false;
 
 void printInfo(void);
-bool getScores(ifstream &inFile, string &name, double &score1, double &score2,
-               double &score3, double &score4, double &score5);
-double calcScore(double score1, double score2, double score3, double score4,
-               double score5);
-double findLowest(double score1, double score2, double score3, double score4,
-                double score5);
-double findHighest(double score1, double score2, double score3, double score4,
-                double score5);
-void writeScore(ofstream &outFile, string name, double finalScore);
+bool getScores(ifstream &, string &, double &, double &,
+               double &, double &, double &);
+double calcScore(double, double, double, double,
+               double);
+double findLowest(double, double, double, double,
+                double);
+double findHighest(double, double, double, double,
+                double);
+void writeScore(ofstream &, string, double);
 void printEnd(void);
 
 int main() {
@@ -51,26 +50,22 @@ int main() {
     printInfo();
     // open the input file + validation
     inFile.open("performers.txt");
-    if (!inFile) 
-    {
+    if (!inFile) {
         cout << "Could not open input file.\n";
         return 1;
     }
     // open the output file + validation
     outFile.open("results.txt");
-    if (!outFile) 
-    {
+    if (!outFile) {
         cout << "Could not open output file.\n";
         return 1;
     }
 
-    while (getScores(inFile, name, score1, score2, score3, score4, score5)) 
-    {
+    while (getScores(inFile, name, score1, score2, score3, score4, score5)) {
         numPeople++;
         finalScore = calcScore(score1, score2, score3, score4, score5);
         // determine the winner so far
-        if (finalScore > winnerScore)
-        {
+        if (finalScore > winnerScore) {
             winnerScore = finalScore;
             winner = name;
         }
@@ -90,10 +85,10 @@ int main() {
 }
 
 /*~*~*~*
-  This function displays basic information about the program.
+  This function takes no arguments and displays basic
+  information about the program.
   */
-void printInfo(void)
-{
+void printInfo(void) {
     if (DE_BUG)
         cout << "This is the welcome function" << endl;
     cout << "Welcome to the competition results calculator!\n"
@@ -107,8 +102,7 @@ void printInfo(void)
  if it succeeds, and false if it doesn't.
  */
 bool getScores(ifstream &inFile, string &name, double &score1, double &score2,
-               double &score3, double &score4, double &score5)
-{
+               double &score3, double &score4, double &score5) {
     if (DE_BUG)
         cout << "This is the getScores function" << endl;
     return bool(inFile >> name >> score1 >> score2 >> score3 >>
@@ -116,12 +110,11 @@ bool getScores(ifstream &inFile, string &name, double &score1, double &score2,
 }
 
 /*~*~*~*
-  This function calls on findLowest() and findHighest() to calculate
-  the final score of the performer. (middle 3 scores)
+  This function takes 5 scores as arguments, and calls on findLowest() and findHighest()
+  to calculate the final score of the performer. (middle 3 scores)
   */
 double calcScore(double score1, double score2, double score3, double score4,
-               double score5)
-{
+               double score5) {
     if (DE_BUG)
         cout << "This is the calcScore function" << endl;
     
@@ -133,11 +126,11 @@ double calcScore(double score1, double score2, double score3, double score4,
     return finalScore;
 }
 /*~*~*~*
-  This function calculates the minimum of the 5 scores and returns that value.
+  This function takes 5 scores as arguments and calculates the minimum
+  of the 5 scores and returns that value.
   */
 double findLowest(double score1, double score2, double score3, double score4,
-                double score5)
-{
+                double score5) {
     if (DE_BUG)
         cout << "\tThis is the findLowest function" << endl;
     
@@ -156,11 +149,11 @@ double findLowest(double score1, double score2, double score3, double score4,
 }
 
 /*~*~*~*
- This function calculates the maximum of the 5 scores and returns that value.
+ This function takes 5 scores and calculates the maximum
+ of the 5 scores and returns that value.
  */
 double findHighest(double score1, double score2, double score3, double score4,
-                double score5)
-{
+                double score5) {
     if (DE_BUG)
         cout << "\tThis is the findHighest function" << endl;
     
@@ -178,21 +171,21 @@ double findHighest(double score1, double score2, double score3, double score4,
 }
 
 /*~*~*~*
-  This function writes the name of the performer and their final score in results.txt
+  This function takes the output file, name, and the final score as arguments, and
+  writes the name of the performer and their final score in results.txt
   */
-void writeScore(ofstream &outFile, string name, double finalScore)
-{
+void writeScore(ofstream &outFile, string name, double finalScore) {
     if (DE_BUG)
         cout << "This is the writeScore function" << endl;
     outFile << name << " " << finalScore << endl;
 }
 
 /*~*~*~*
-  This function displays a farewell message at the end of the program.
+  This function takes no arguments and displays a farewell
+  message at the end of the program.
   */
-void printEnd(void)
-{
+void printEnd(void) {
     if (DE_BUG)
         cout << "This is the END function" << endl;
-    cout << endl << "This is the end of the program.\n";
+    cout << endl << "This is the end of the program. Thanks!\n";
 }
