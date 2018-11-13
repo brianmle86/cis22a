@@ -27,12 +27,9 @@ const int DE_BUG = false;
 void printInfo(void);
 bool getScores(ifstream &, string &, double &, double &,
                double &, double &, double &);
-double calcScore(double, double, double, double,
-               double);
-double findLowest(double, double, double, double,
-                double);
-double findHighest(double, double, double, double,
-                double);
+double calcScore(double, double, double, double, double);
+double findLowest(double, double, double, double, double);
+double findHighest(double, double, double, double, double);
 void writeScore(ofstream &, string, double);
 void printEnd(void);
 
