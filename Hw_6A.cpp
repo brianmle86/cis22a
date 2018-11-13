@@ -105,6 +105,28 @@ void calcCircle(double radius, double &area, double &circ) {
     circ = 2 * PI * radius;
 }
 
+/**
+WELCOME to the CIRCLE calculator!
+
+This program will output the
+	circumference and
+	area
+of a circle with a given radius.
+
+Enter radius (must be > 0): 4
 
 
+RESULTS
+	Radius = 4
+	Circumference = 25.12
+	Area = 50.24
 
+
+	 ~~*~~ The END ~~*~~ 
+
+	        ~~*~~ 
+	      Thank you
+	for using my program!
+
+
+*/

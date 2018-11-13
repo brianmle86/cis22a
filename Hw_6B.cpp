@@ -21,7 +21,6 @@
    NAME: Brian Le
  
 *~**/
-
 #include <iostream>
 #include <fstream>
 
@@ -99,8 +98,9 @@ void displayRectangle(double length, double width, double area, double perim) {
  This function reads the length and the width of a rectangle
  from a file. It returns true in case of success, false otherwise.
 *~**/
-bool getRectangle(ifstream &inFile, double length, double width) {
-    return inFile << length << width;
+bool getRectangle(ifstream &inFile, double &length, double &width) {
+    return bool(inFile >> length >> width);
+
 }
 
 
@@ -113,6 +113,47 @@ void calculateRectangle(double length, double width, double &area, double &perim
     area  = length * width;
 }
 /**
-OUTPUT:
+WELCOME to the RECTANGLE calculator!
+
+This program will output the
+	perimeter and
+	area
+of several rectangles.
+
+
+RESULTS: 	Length = 10, Width  = 20
+		Perimeter = 60
+		     Area = 200
+
+RESULTS: 	Length = 10, Width  = 5
+		Perimeter = 30
+		     Area = 50
+
+RESULTS: 	Length = 2, Width  = 100
+		Perimeter = 204
+		     Area = 200
+
+RESULTS: 	Length = 30, Width  = 50
+		Perimeter = 160
+		     Area = 1500
+
+RESULTS: 	Length = 9, Width  = 7
+		Perimeter = 32
+		     Area = 63
+
+RESULTS: 	Length = 2, Width  = 3
+		Perimeter = 10
+		     Area = 6
+
+RESULTS: 	Length = 9, Width  = 9
+		Perimeter = 36
+		     Area = 81
+
+
+	 ~~*~~ The END ~~*~~ 
+
+	        ~~*~~ 
+	      Thank you
+	for using my program!
 
 */

@@ -35,20 +35,32 @@ void printEnd(void);
 
 int main() {
     // declare the variables needed in main()
-    
+    ifstream inFile;
+    ofstream outFile;
+
     printInfo();
     // open the input file + validation
+    inFile.open("performers.txt");
+    if (!inFile) {
+        cout << "Could not open file.\n";
+        return 1;
+    }
     // open the output file + validation
-    
-    while (getScores())
-    {
+    outFile.open("results.txt");
+    if (!outFile) {
+        cout << "Could not open file.\n";
+        return 1;
+    }
+
+    while (getScores()) {
         calcScore();
         // determine the winner so far
         writeScore();
     }
     // close the input file
+    inFile.close();
     // close the output file
-    
+    outFile.close();
     // display the number of participants
     // display the winner and the winner's score
     
@@ -64,18 +76,24 @@ void printInfo(void)
 {
     if (DE_BUG)
         cout << "This is the welcome function" << endl;
-
+    cout << "Welcome to the competition results calculator!\n"
+         << "There are five judges who give out a score,\n"
+         << "and the highest and lowest scores are dropped.\n"
+         << "The final score is the average of the three remaining scores.\n";
 }
 
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
+ This function reads the performer's name, followed by their 5 scores. It returns true
+ if it succeeds, and false if it doesn't.
  */
-bool getScores(void)
+bool getScores(ifstream &inFile, string &name, double &score1, double &score2
+               double &score3, double &score4, double &score5)
 {
     if (DE_BUG)
         cout << "This is the getScores function" << endl;
-    return false;  // change this line (see 6B)
+    
+    return bool(inFile >> name >> score1 >> score2 >> score3 >>
+                score4, score5);  // change this line (see 6B)
 }
 
 /*~*~*~*
