@@ -23,55 +23,75 @@
 
 using namespace std;
 
-const int DE_BUG = true;
+const int DE_BUG = false;
 
 void printInfo(void);
-bool getScores(void);
-void calcScore(void);
-void findLowest(void);
-void findHighest(void);
-void writeScore(void);
+bool getScores(ifstream &inFile, string &name, double &score1, double &score2,
+               double &score3, double &score4, double &score5);
+double calcScore(double score1, double score2, double score3, double score4,
+               double score5);
+double findLowest(double score1, double score2, double score3, double score4,
+                double score5);
+double findHighest(double score1, double score2, double score3, double score4,
+                double score5);
+void writeScore(ofstream &outFile, string name, double finalScore);
 void printEnd(void);
 
 int main() {
     // declare the variables needed in main()
     ifstream inFile;
     ofstream outFile;
+    string name, winner;
+    double score1, score2, score3, score4, score5;
+    double finalScore,
+           winnerScore = 0;
+    double numPeople = 0;
+
 
     printInfo();
     // open the input file + validation
     inFile.open("performers.txt");
-    if (!inFile) {
-        cout << "Could not open file.\n";
+    if (!inFile) 
+    {
+        cout << "Could not open input file.\n";
         return 1;
     }
     // open the output file + validation
     outFile.open("results.txt");
-    if (!outFile) {
-        cout << "Could not open file.\n";
+    if (!outFile) 
+    {
+        cout << "Could not open output file.\n";
         return 1;
     }
 
-    while (getScores()) {
-        calcScore();
+    while (getScores(inFile, name, score1, score2, score3, score4, score5)) 
+    {
+        numPeople++;
+        finalScore = calcScore(score1, score2, score3, score4, score5);
         // determine the winner so far
-        writeScore();
+        if (finalScore > winnerScore)
+        {
+            winnerScore = finalScore;
+            winner = name;
+        }
+        writeScore(outFile, name, finalScore);
     }
     // close the input file
     inFile.close();
     // close the output file
     outFile.close();
     // display the number of participants
+    cout << "Number of participants: " << numPeople << endl;
     // display the winner and the winner's score
-    
+    cout << "The winner is " << winner << " with a score of "
+         << winnerScore << endl;
     printEnd();
     return 0;
 }
 
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
- */
+  This function displays basic information about the program.
+  */
 void printInfo(void)
 {
     if (DE_BUG)
@@ -79,71 +99,100 @@ void printInfo(void)
     cout << "Welcome to the competition results calculator!\n"
          << "There are five judges who give out a score,\n"
          << "and the highest and lowest scores are dropped.\n"
-         << "The final score is the average of the three remaining scores.\n";
+         << "The final score is the average of the three remaining scores.\n\n";
 }
 
 /*~*~*~*
  This function reads the performer's name, followed by their 5 scores. It returns true
  if it succeeds, and false if it doesn't.
  */
-bool getScores(ifstream &inFile, string &name, double &score1, double &score2
+bool getScores(ifstream &inFile, string &name, double &score1, double &score2,
                double &score3, double &score4, double &score5)
 {
     if (DE_BUG)
         cout << "This is the getScores function" << endl;
-    
     return bool(inFile >> name >> score1 >> score2 >> score3 >>
-                score4, score5);  // change this line (see 6B)
+                score4 >> score5);  // change this line (see 6B)
 }
 
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
- */
-void calcScore(void)
+  This function calls on findLowest() and findHighest() to calculate
+  the final score of the performer. (middle 3 scores)
+  */
+double calcScore(double score1, double score2, double score3, double score4,
+               double score5)
 {
     if (DE_BUG)
         cout << "This is the calcScore function" << endl;
-    findLowest();
-    findHighest();
+    
+    double max, min, totalScore, finalScore;
+    totalScore = score1 + score2 + score3 + score4 + score5;
+    min = findLowest(score1, score2, score3, score4, score5);
+    max = findHighest(score1, score2, score3, score4, score5);
+    finalScore = totalScore - max - min;
+    return finalScore;
 }
-
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
- */
-void findLowest(void)
+  This function calculates the minimum of the 5 scores and returns that value.
+  */
+double findLowest(double score1, double score2, double score3, double score4,
+                double score5)
 {
     if (DE_BUG)
         cout << "\tThis is the findLowest function" << endl;
+    
+    double min;
+    min = score1;
+    if (min > score2)
+        min = score2;
+    if (min > score3)
+        min = score3;
+    if (min > score4)
+        min = score4;
+    if (min > score5)
+        min = score5;
+    return min;
+
 }
 
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
+ This function calculates the maximum of the 5 scores and returns that value.
  */
-void findHighest(void)
+double findHighest(double score1, double score2, double score3, double score4,
+                double score5)
 {
     if (DE_BUG)
         cout << "\tThis is the findHighest function" << endl;
+    
+    double max;
+    max = score1;
+    if (max < score2)
+        max = score2;
+    if (max < score3)
+        max = score3;
+    if (max < score4)
+        max = score4;
+    if (max < score5)
+        max = score5;
+    return max;
 }
 
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
- */
-void writeScore(void)
+  This function writes the name of the performer and their final score in results.txt
+  */
+void writeScore(ofstream &outFile, string name, double finalScore)
 {
     if (DE_BUG)
         cout << "This is the writeScore function" << endl;
+    outFile << name << " " << finalScore << endl;
 }
 
 /*~*~*~*
- Write a comment here to describe the purporse of this function.
- 
- */
+  This function displays a farewell message at the end of the program.
+  */
 void printEnd(void)
 {
     if (DE_BUG)
         cout << "This is the END function" << endl;
+    cout << endl << "This is the end of the program.\n";
 }

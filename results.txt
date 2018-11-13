@@ -1,0 +1,8 @@
+John 22.4
+Dan 27.2
+Mary 24.8
+Andrew 27
+Sue 27.4
+Linda 25.8
+David 25.2
+Ann 24
