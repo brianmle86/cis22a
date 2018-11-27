@@ -11,9 +11,9 @@
 using namespace std;
 
 // Function prototypes
-void getTestScores(double [], int &size);
-double getTotal(double [], int &size);
-double getLowest(double [], int &size);
+void getTestScores(double [], int &);
+double getTotal(double [], int &);
+double getLowest(double [], int &);
 
 int main()
 {
@@ -35,11 +35,11 @@ int main()
 
    // Subtract the lowest score from the total.
    total -= lowestScore;
+   size--; //you mean dividing by size minus 1 right? <===
 
    // Calculate the average. Divide by 3 because
    // the lowest test score was dropped.
    average = total / size;
-
    // Set up numeric output formatting.
    cout << fixed << showpoint << setprecision(1);
    // Display the average.
