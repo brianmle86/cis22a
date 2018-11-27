@@ -11,9 +11,9 @@
 using namespace std;
 
 // Function prototypes
-void getTestScores(double scores[], int size);
-double getTotal(const double array[], int size);
-double getLowest(const double array[], int &size);
+void getTestScores(double [], int &size);
+double getTotal(double [], int &size);
+double getLowest(double [], int &size);
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
           total,            // Total of the scores
           lowestScore,      // Lowest test score
           average;          // Average test score
-
+   
    // Get the test scores from the user.
    getTestScores(testScores, size);
 
@@ -61,13 +61,13 @@ void getTestScores(double scores[], int &size)
    int index;
    
    // Get the number of scores
-   cout << "Enter the number of scores ";
+   cout << "Enter the number of scores: ";
    cin >> size;
    // Get each test score.
-   for(index = 1; index <= size; index++)
+   for(index = 0; index < size; index++)
    {
       cout << "Enter test score number " 
-           << index << ": ";
+           << (index + 1) << ": ";
       cin >> scores[index];
    }
 }
@@ -78,12 +78,12 @@ void getTestScores(double scores[], int &size)
 // elements is returned as a double.                 *
 //****************************************************
 
-double getTotal(double &array, int size)
+double getTotal(double array[], int &size)
 {
    double total = 0; // Accumulator
-
+    
    // Add each element to total.
-   for (int count = 0; count < (size - 1); count++)
+   for (int count = 0; count < size; count++)
       total += array[count];
 
    // Return the total.
@@ -96,7 +96,7 @@ double getTotal(double &array, int size)
 // array is returned as a double.                    *
 //****************************************************
 
-double getLowest(double &array, int size)
+double getLowest(double array[], int &size)
 {
    double lowest;  // To hold the lowest value
 
@@ -106,14 +106,14 @@ double getLowest(double &array, int size)
    // Step through the rest of the array. When a
    // value less than lowest is found, assign it
    // to lowest.
-   for (int count = 0; count < (size - 1); count++)
+   for (int count = 0; count < size; count++)
    {
       if (array[count] < lowest)
          lowest = array[count];
    }
 
    // Return the lowest value.
-   return array[lowest];
+   return lowest;
 }
 /************ OUTPUT *******************
 
