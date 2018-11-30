@@ -1,0 +1,6 @@
+Student IDs(and respective scores) with a score
+lower than the average of 81.6923:
+SW111 45
+TY4XZ 45
+AC234 78
+9QWE9 45
