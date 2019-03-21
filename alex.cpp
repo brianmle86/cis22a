@@ -2,6 +2,12 @@
 #include <fstream>
 using namespace std;
 
+const int MAX = 25;
+
+
+
+
+
 
 void sortArray(int Tests[], int Size)
 {
@@ -24,11 +30,9 @@ void sortArray(int Tests[], int Size)
 
 int main()
 {
-    int num1;
-    //int Tests[]{};
-    int Size = 0;
-    int Numbers;
-    int array[100];
+    int num1, n, Size = 0;
+    int numbers[MAX];
+    int i = 0;
 
     cout << "Enter an integer to search for " << endl;
     cin >> num1;
@@ -36,14 +40,13 @@ int main()
     ifstream inFile;
     inFile.open("nums-1.txt");          // Open file
 
-    if(!inFile)                         // Check File Error
-    {
+    if(!inFile) { // Check File Error
         cout << "Could not open file " << endl;
         return 0;
     }
-    while(inFile >> Numbers)
-    {
-        array[i] = Numbers;
+
+    while(inFile >> n) {
+        numbers[i] = n;
         Size++;
         i++;
     }
@@ -53,20 +56,11 @@ int main()
 
     int Tests[Size];
     inFile.open("nums-1.txt");          // Open file
-    int i = 0;
 
-        while (!inFile.eof()) {
-            inFile >> Tests[i];
-
-            i++;
-
-        }
-
-    for(int i = 0; i < Size; i++)
-    {
-        cout << Tests[i] << endl;
+    sortArray(numbers, Size);
+    for(int i = 0; i < Size; i++) {
+        cout << numbers[i] << endl;
     }
-    sortArray(Tests, Size);
     inFile.close();
 
     return 0;
